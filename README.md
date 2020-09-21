@@ -6,3 +6,5 @@ The email functionality is a(n altered) copy and paste from this source: https:/
 On my desktop I have this script running every 24 hours. I learned how to do that from this informative YouTube link: https://www.youtube.com/watch?v=n2Cr_YRQk7o&t=1s
 
 If you're looking to do something similar to this, I invite you to email me at jamiealizadeh@gmail.com, if I'm not too busy I'm happy to give you a hand with your code 😀
+
+Most importantly thanks a lot to Jason Michael Baumgartner for creating Pushshift (https://github.com/pushshift/api), the API which enabled me to do this. You can support him on Patreon here: https://www.patreon.com/pushshift
