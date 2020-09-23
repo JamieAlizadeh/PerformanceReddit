@@ -16,7 +16,7 @@ def estimate_location(reddit_username):
 
     return("GTA posts: " + str(len(list(gen_gta))) + ", Elsewhere posts: " + str(len(list(gen_elsewhere))))
 
-q_terms = "CAD"
+q_terms = "CAD|km"
 result_matrix = pd.DataFrame({'subreddit': [ ], 'url': [], 'hours ago': [], 'location data': []})
 result_size_max = 15
 after_days = '1d'
@@ -37,7 +37,7 @@ subs = ['whatcarshouldibuy', 'askcarguys', 'askcarsales', 'toyota',
         'honda', 'hyundai', 'ford', 'mazda', 'audi', 'lexus',
         'mercedes_benz', 'bmw', 'subaru', 'dodge', 'kia', 'nissan',
         'ferrari', 'porsche', 'corvette', 'mitsubishi', 'jaguar',
-        'landrover', 'volvo', 'scion']
+        'landrover', 'volvo', 'scion', 'autos', 'cars']
 
 for i in range(len(subs)):
     result_matrix = print_links_of_sub(subs[i], result_matrix)
@@ -50,7 +50,7 @@ def send_email(recipient, message):
     from email.mime.text import MIMEText
 
     gmailUser = 'anew232519@gmail.com'
-    gmailPassword = 'hunter2' #replace with your own password
+    gmailPassword = 'Hunter2'
 
     msg = MIMEMultipart()
     msg['From'] = f'"Perf Leads" <{gmailUser}>'
