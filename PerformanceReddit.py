@@ -16,11 +16,6 @@ def estimate_location(reddit_username):
 
     return("GTA posts: " + str(len(list(gen_gta))) + ", Elsewhere posts: " + str(len(list(gen_elsewhere))))
 
-q_terms = "CAD|km"
-result_matrix = pd.DataFrame({'subreddit': [ ], 'url': [], 'hours ago': [], 'location data': []})
-result_size_max = 15
-after_days = '1d'
-
 def print_links_of_sub(sub, rmx):
     gen = api.search_submissions(size=result_size_max, subreddit=sub, q=q_terms, after=after_days,
                                  filter=['url','author', 'title', 'subreddit'], sort='desc', sort_type='created_utc')
@@ -32,18 +27,6 @@ def print_links_of_sub(sub, rmx):
                           'location data': estimate_location(results[i][0])},
                          ignore_index=True, sort=False)
     return rmx
-
-subs = ['whatcarshouldibuy', 'askcarguys', 'askcarsales', 'toyota',
-        'honda', 'hyundai', 'ford', 'mazda', 'audi', 'lexus',
-        'mercedes_benz', 'bmw', 'subaru', 'dodge', 'kia', 'nissan',
-        'ferrari', 'porsche', 'corvette', 'mitsubishi', 'jaguar',
-        'landrover', 'volvo', 'scion', 'autos', 'cars']
-
-for i in range(len(subs)):
-    result_matrix = print_links_of_sub(subs[i], result_matrix)
-
-pd.options.display.max_colwidth = 700
-result_matrix = result_matrix.sort_values(by='hours ago', ascending=True)
 
 def send_email(recipient, message):
     from email.mime.multipart import MIMEMultipart
@@ -70,4 +53,22 @@ def send_email(recipient, message):
     except:
         print ('Something went wrong...')
 
-send_email("jamiealizadeh@gmail.com", result_matrix.to_string())
+if __name__ == "__main__":
+    q_terms = "CAD|km"
+    result_matrix = pd.DataFrame({'subreddit': [ ], 'url': [], 'hours ago': [], 'location data': []})
+    result_size_max = 15
+    after_days = '1d'
+
+    subs = ['whatcarshouldibuy', 'askcarguys', 'askcarsales', 'toyota',
+        'honda', 'hyundai', 'ford', 'mazda', 'audi', 'lexus',
+        'mercedes_benz', 'bmw', 'subaru', 'dodge', 'kia', 'nissan',
+        'ferrari', 'porsche', 'corvette', 'mitsubishi', 'jaguar',
+        'landrover', 'volvo', 'scion', 'autos', 'cars']
+
+    for i in range(len(subs)):
+        result_matrix = print_links_of_sub(subs[i], result_matrix)
+
+    pd.options.display.max_colwidth = 700
+    result_matrix = result_matrix.sort_values(by='hours ago', ascending=True)
+
+    send_email("jamiealizadeh@gmail.com", result_matrix.to_string())
