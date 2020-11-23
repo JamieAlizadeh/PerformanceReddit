@@ -5,7 +5,7 @@ def send_email(recipient, message):
     from email.mime.text import MIMEText
 
     gmailUser = 'anew232519@gmail.com'
-    gmailPassword = 'Hunter2' #Not my real password
+    gmailPassword = 'Hunter2'
 
     msg = MIMEMultipart()
     msg['From'] = f'"Perf Leads" <{gmailUser}>'

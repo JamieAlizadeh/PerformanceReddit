@@ -13,7 +13,7 @@ q_terms = "CAD|km|Toronto|askTO|Brampton|GTA|Missisauga|Durham|Ontario|Niagara|O
 result_size_max = 15
 after_days = '1d'
 
-def print_links_of_sub(sub, rmx):
+def cmpn2helper(sub, rmx):
     gen = api.search_submissions(size=result_size_max, subreddit=sub, after=after_days,
                                  filter=['url','author', 'title', 'subreddit'], sort='desc', sort_type='created_utc')
 
@@ -32,7 +32,7 @@ def campaign_2():
     subs = ['whatcarshouldibuy']
 
     for i in range(len(subs)):
-        result_matrix = print_links_of_sub(subs[i], result_matrix)
+        result_matrix = cmpn2helper(subs[i], result_matrix)
 
     pd.options.display.max_colwidth = 700
     result_matrix = result_matrix.sort_values(by='hours ago', ascending=True)

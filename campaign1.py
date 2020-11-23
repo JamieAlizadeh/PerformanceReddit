@@ -13,7 +13,7 @@ def campaign_1():
 
 
     for i in range(len(subs)):
-        result_matrix = print_links_of_sub(subs[i], result_matrix)
+        result_matrix = print_links_of_sub(subs[i], result_matrix, q_terms="CAD|km", result_size_max=15, after_days='1d')
 
     pd.options.display.max_colwidth = 700
     result_matrix = result_matrix.sort_values(by='hours ago', ascending=True)
