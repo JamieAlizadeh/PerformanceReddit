@@ -3,6 +3,9 @@ api = PushshiftAPI()
 
 
 def estimate_location(reddit_username, **kwargs):
+    if reddit_username == "AutoModerator":
+        return "AutoModerator"
+    
     q_gta = "Toronto|askTO|Brampton|GTA|Missisauga|Durham|Ontario|Niagara|Oakville"
     q_elsewhere = "Montreal|Calgary|Ottawa|Edmonton|Winnipeg|Vancouver|Quebec|Halifax"
 
